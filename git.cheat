@@ -1,0 +1,57 @@
+% git
+
+# Create an empty git repository
+git init
+
+# Clone a git repository and checkout the specified branch
+git clone <repo> <path> -b <initial_branch>
+
+# Set global git user name
+git config --global user.name <name>
+
+# Set global git user email
+git config --global user.email <email>
+
+# Add a remote for a git repository
+git remote add <new_remote_name> <repo>
+
+# Rename a remote for a git repository
+git remote rename <remote_name> <new_remote_name>
+
+# Remove a remote for a repository
+git remote remove <remote_name>
+
+# Show all remote repositories with their URLs
+git remote --verbose
+
+# Update all submodules
+git submodule update --init --recursive
+
+# Switch to a local branch for a git repository
+git switch <local_branch>
+
+# Switch to a local branch for a git repository
+git switch <local_branch>
+
+# Create a local branch that tracks a remote branch
+git switch <remote_branch>
+
+# Create a new branch and switch to it
+git switch -c <branch>
+
+# Create an empty commit
+git commit --allow-empty -m '<message>'
+
+# Remove commits from local repository and destroy changes
+git reset --hard HEAD~<number_of_commits>
+
+# Remove commits from local repository and keep changes
+git reset --soft HEAD~<number_of_commits>
+
+# Set the upstream branch for the current branch
+git branch --set-upstream-to=<remote_name>/$(git rev-parse --abbrev-ref HEAD)
+
+$ initial_branch: git ls-remote --head <repo> | awk '{gsub("refs/heads/", "", $2); print $2}'
+$ local_branch: git branch --format "%(refname:short)"
+$ remote_branch: git branch --remote --format "%(refname:lstrip=3)" | grep -v HEAD | sort | uniq
+$ remote_name: git remote
