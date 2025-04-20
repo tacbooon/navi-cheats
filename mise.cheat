@@ -1,0 +1,43 @@
+% mise
+
+# Install a specific version of a package
+mise install <available_tool>@<available_version>
+
+# Uninstall a specific version of a package
+mise uninstall <tool>@<version>
+
+# Uninstall unused tool versions
+mise prune
+
+# Set global version for a package
+mise use --global <tool>@<version>
+
+# Set local version for a package
+mise use <tool>@<version>
+
+# Set an environment variable in the configuration file:
+mise set <key>=<value>
+
+# List available tools
+mise registry
+
+# List available versions
+mise ls-remote <available_tool>
+
+# List installed tool versions
+mise ls --installed
+
+# List current tool versions
+mise ls --current
+
+# List outdated tool versions
+mise outdated
+
+# Run task
+mise run <task>
+
+$ tool: mise ls --no-header | awk '{print $1}' | sort | uniq
+$ available_tool: mise registry | tail -n +1 | awk '{print $1}'
+$ version: mise ls <tool> --no-header | awk '{print $2}' | sort | uniq
+$ available_version: mise ls-remote <available_tool>
+# task: mise tasks ls --no-header | awk '{print $1}'
